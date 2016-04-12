@@ -10,6 +10,7 @@
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
+        "anouar/paypalpayment": "~1.0",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
 	"alaouy/youtube": "dev-master",

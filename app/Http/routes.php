@@ -20,9 +20,22 @@ Route::get('/', function () {
     'maxResults'    => 10
 );
 	$results = Youtube::searchAdvanced($params, true);
-	print_r($results);
+    $youtube = array();
+    foreach ($results['results'] as $key => $value) {
+        $youtube[$key]['videoId'] = $value->id->videoId;
+        $youtube[$key] ['title'] = $value->snippet->title;
+        $youtube[$key] ['description'] = $value->snippet->description;
+        $youtube[$key] ['thumbnails'] = $value->snippet->thumbnails->high->url;
+        $youtube[$key] ['url'] = 'https://youtube.com/watch?v='. $value->id->videoId;
+
+      // print_r($value->snippet->thumbnails->high);
+	   // print_r($value->id->videoId);
+    }
+    var_dump($youtube);
     // return $results;
 });
+
+Route::get('pay', ['uses' => 'PaypalController@store']);
 
 /*
 |--------------------------------------------------------------------------
